@@ -36,6 +36,8 @@ rem Заголовок видео потока
 set "video_track_name=MPEG-4 AVC @ ~4000 Kbps - iTunes"
 rem Идентификатор видео трека в исходном файле
 set "video_track_id=0"
+rem Смена частоты кадров. Расскоментируйте если нужно.
+rem set "video_fps=25fps"
 
 rem ### Аудио
 rem Если каких то файлов нет, они просто не будут добавлены. Сообщений об ошибках не будет.
@@ -173,7 +175,12 @@ set "mkvmerge_global_options=--default-language "eng" --disable-track-statistics
 
 
 rem Настройки видео
-set "mkvmerge_video_track=--no-audio --no-subtitles --no-buttons --no-track-tags --no-chapters --no-attachments --no-global-tags --track-name "%video_track_id%:%video_track_name%" %video_file_name%" 
+set "mkvmerge_video_fps="
+if defined video_fps (
+  set "mkvmerge_video_fps=--default-duration %video_track_id%:%video_fps%"
+)
+
+set "mkvmerge_video_track=--no-audio --no-subtitles --no-buttons --no-track-tags --no-chapters --no-attachments --no-global-tags %mkvmerge_video_fps% --track-name "%video_track_id%:%video_track_name%" %video_file_name%" 
 
 
 rem ### Аудио
