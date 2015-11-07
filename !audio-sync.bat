@@ -50,7 +50,9 @@ rem Системные настройки
 rem ###########################################################################
 
 rem Путь до eac3to.exe
-set "ea3to_path=C:\Program Files (x86)\MeGUI\tools\eac3to\eac3to.exe"
+set "ea3to_path=C:\Program Files (x86)\eac3to\eac3to.exe"
+rem Альтернативный путь
+set "ea3to_megui_path=C:\Program Files (x86)\MeGUI\tools\eac3to\eac3to.exe"
 
 rem ###########################################################################
 rem Сама программа. Не трогать без необходимости.
@@ -58,9 +60,14 @@ rem ###########################################################################
 
 rem Проверяем существование файла eac3to.exe
 if not exist "%ea3to_path%" (
+  if not exist "%ea3to_megui_path%" (
      rem Сообщение об ошибке
-     set "error=Путь до eac3to указан не верно! %ea3to_path% не существуют!"
+     set "error=Путь до eac3to указан не верно! %ea3to_path% или %ea3to_megui_path% не существуют!"
      goto error
+  ) else (
+    rem Используем альтернативный путь
+    set ea3to_path="%ea3to_megui_path%"
+  )
 )
 
 rem Проверка наличия уже готового файла
