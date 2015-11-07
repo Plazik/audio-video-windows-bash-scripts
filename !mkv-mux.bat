@@ -20,10 +20,13 @@ set "serial_name_rus=Сериал"
 rem Год выхода
 set "year=2015"
 
+rem Название серии без пробелов
+set episode_name_eng_without_spaces=%episode_name_eng: =.%
+
 rem Заголовок файла
 set "movie_name=%serial_name_rus% / %serial_name_eng% (%year%) %season_episode% %episode_name_rus% / %episode_name_eng%"
 rem Имя конечного файла
-set "file_name=%serial_name_eng% %season_episode% %episode_name_eng% 720p WEB-DL Rus Eng Subs-HDCLUB.mkv"
+set "file_name=%serial_name_eng%.%season_episode%.%episode_name_eng_without_spaces%.720p.WEB-DL.Rus.Eng.Subs.HDCLUB.mkv"
 rem Путь до папки, куда будет сохранен файл укажите вместо %cd%
 rem ОБРАТНЫЙ СЛЕШ НА КОНЦЕ ОБЯЗАТЕЛЕН!!! (\) 
 set "dir_name=%cd%\"
