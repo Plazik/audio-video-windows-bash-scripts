@@ -27,9 +27,9 @@ rem Заголовок файла
 set "movie_name=%serial_name_rus% / %serial_name_eng% (%year%) %season_episode% %episode_name_rus% / %episode_name_eng%"
 rem Имя конечного файла
 set "file_name=%serial_name_eng%.%season_episode%.%episode_name_eng_without_spaces%.720p.WEB-DL.Rus.Eng.Subs.HDCLUB.mkv"
-rem Путь до папки, куда будет сохранен файл укажите вместо %cd%
+rem Путь до папки, куда будет сохранен итоговый файл. Укажите вместо %cd%
 rem ОБРАТНЫЙ СЛЕШ НА КОНЦЕ ОБЯЗАТЕЛЕН!!! (\) 
-set "dir_name=%cd%\"
+set "dir_name_output=%cd%\"
 
 rem ### Видео
 
@@ -142,6 +142,9 @@ set "mkvmerge_path=C:\Program Files\MKVToolNix\mkvmerge.exe"
 rem Альтернативный путь
 set "mkvmerge_megui_path=C:\Program Files (x86)\MeGUI\tools\mkvmerge\mkvmerge.exe"
 
+rem Путь до папки с исходными файлами. По умолчанию текущий каталог.
+rem ОБРАТНЫЙ СЛЕШ НА КОНЦЕ ОБЯЗАТЕЛЕН!!! (\) 
+set "dir_name=%cd%\"
 
 rem ###########################################################################
 rem Сама программа. Не трогать без необходимости.
@@ -160,9 +163,9 @@ if not exist "%mkvmerge_path%" (
 )
 
 rem Проверка наличия уже готового файла
-if exist "%dir_name%%file_name%" (
+if exist "%dir_name_output%%file_name%" (
   rem Сообщение об ошибке
-  set "error=Конечный файл уже существует! %dir_name%%file_name%"
+  set "error=Конечный файл уже существует! %dir_name_output%%file_name%"
   goto error
 )
 
@@ -307,9 +310,9 @@ if defined chapters_file_name (
 )
 
 rem Коммандная строка для mkv
-set mkvmerge_final_command="%mkvmerge_path%" %mkvmerge_global_options% --output "%dir_name%%file_name%" --title "%movie_name%" %mkvmerge_video_track% %mkvmerge_audio_tracks% %mkvmerge_subtitles_tracks% %mkvmerge_attaches% %mkvmerge_chapters%
+set mkvmerge_final_command="%mkvmerge_path%" %mkvmerge_global_options% --output "%dir_name_output%%file_name%" --title "%movie_name%" %mkvmerge_video_track% %mkvmerge_audio_tracks% %mkvmerge_subtitles_tracks% %mkvmerge_attaches% %mkvmerge_chapters%
 
-echo Создание файла %dir_name%%file_name%
+echo Создание файла %dir_name_output%%file_name%
 
 echo %mkvmerge_final_command% 1> "%~n0 log.txt"
 
