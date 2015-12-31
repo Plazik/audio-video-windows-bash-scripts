@@ -38,7 +38,7 @@ set "time[6]=0:10:00.000"
 set "delay[6]=100"
 
 set "time[7]=0:10:00.000"
-set "delay[7]=-100"
+set "delay[7]=-9999"
 
 
 rem Настройки
