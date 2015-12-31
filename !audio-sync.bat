@@ -41,6 +41,9 @@ set "time[7]=0:10:00.000"
 set "delay[7]=-100"
 
 
+rem Настройки
+set "settings=-keepdialnorm -silence"
+
 rem Путь до папки, куда будет сохранен файл укажите вместо %cd%
 rem ОБРАТНЫЙ СЛЕШ НА КОНЦЕ ОБЯЗАТЕЛЕН!!! (\) 
 set "dir_name=%cd%\"
@@ -87,7 +90,7 @@ if not exist "%dir_name%%video_file_name%" (
 rem Первый проход
 if defined time[1] (
   if defined delay[1] (
-    "%ea3to_path%" "%source_file_name%.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" %delay[1]%ms -keepdialnorm -silence -log="%source_file_name%-eac3tolog-01.txt"
+    "%ea3to_path%" "%source_file_name%.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" %delay[1]%ms %settings% -log="%source_file_name%-eac3tolog-01.txt"
   )
 )else (
   rem Переименовываем файл как будто сработал первый проход.
@@ -100,7 +103,7 @@ if defined time[2] (
     rem Переименовывваем файл во временный
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
     rem Выполняем операцию в eac3to
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[2]%,%delay[2]%ms -log="%source_file_name%-eac3tolog-02.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[2]%,%delay[2]%ms %settings% -log="%source_file_name%-eac3tolog-02.txt"
     rem Удаляем временный файл
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
@@ -109,7 +112,7 @@ if defined time[2] (
 if defined time[3] (
   if defined delay[3] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[3]%,%delay[3]%ms -log="%source_file_name%-eac3tolog-03.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[3]%,%delay[3]%ms %settings% -log="%source_file_name%-eac3tolog-03.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -117,7 +120,7 @@ if defined time[3] (
 if defined time[4] (
   if defined delay[4] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[4]%,%delay[4]%ms -log="%source_file_name%-eac3tolog-04.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[4]%,%delay[4]%ms %settings% -log="%source_file_name%-eac3tolog-04.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -125,7 +128,7 @@ if defined time[4] (
 if defined time[5] (
   if defined delay[5] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[5]%,%delay[5]%ms -log="%source_file_name%-eac3tolog-05.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[5]%,%delay[5]%ms %settings% -log="%source_file_name%-eac3tolog-05.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -133,7 +136,7 @@ if defined time[5] (
 if defined time[6] (
   if defined delay[6] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[6]%,%delay[6]%ms -log="%source_file_name%-eac3tolog-06.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[6]%,%delay[6]%ms %settings% -log="%source_file_name%-eac3tolog-06.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -141,7 +144,7 @@ if defined time[6] (
 if defined time[7] (
   if defined delay[7] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[7]%,%delay[7]%ms -log="%source_file_name%-eac3tolog-07.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[7]%,%delay[7]%ms %settings% -log="%source_file_name%-eac3tolog-07.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -149,7 +152,7 @@ if defined time[7] (
 if defined time[8] (
   if defined delay[8] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[8]%,%delay[8]%ms -log="%source_file_name%-eac3tolog-08.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[8]%,%delay[8]%ms %settings% -log="%source_file_name%-eac3tolog-08.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -157,7 +160,7 @@ if defined time[8] (
 if defined time[9] (
   if defined delay[9] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[9]%,%delay[9]%ms -log="%source_file_name%-eac3tolog-09.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[9]%,%delay[9]%ms %settings% -log="%source_file_name%-eac3tolog-09.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -165,7 +168,7 @@ if defined time[9] (
 if defined time[10] (
   if defined delay[10] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[10]%,%delay[10]%ms -log="%source_file_name%-eac3tolog-10.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[10]%,%delay[10]%ms %settings% -log="%source_file_name%-eac3tolog-10.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -173,7 +176,7 @@ if defined time[10] (
 if defined time[11] (
   if defined delay[11] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[11]%,%delay[11]%ms -log="%source_file_name%-eac3tolog-11.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[11]%,%delay[11]%ms %settings% -log="%source_file_name%-eac3tolog-11.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -181,7 +184,7 @@ if defined time[11] (
 if defined time[12] (
   if defined delay[12] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[12]%,%delay[12]%ms -log="%source_file_name%-eac3tolog-12.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[12]%,%delay[12]%ms %settings% -log="%source_file_name%-eac3tolog-12.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -189,7 +192,7 @@ if defined time[12] (
 if defined time[13] (
   if defined delay[13] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[13]%,%delay[13]%ms -log="%source_file_name%-eac3tolog-13.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[13]%,%delay[13]%ms %settings% -log="%source_file_name%-eac3tolog-13.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -197,7 +200,7 @@ if defined time[13] (
 if defined time[14] (
   if defined delay[14] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[14]%,%delay[14]%ms -log="%source_file_name%-eac3tolog-14.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[14]%,%delay[14]%ms %settings% -log="%source_file_name%-eac3tolog-14.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -205,7 +208,7 @@ if defined time[14] (
 if defined time[15] (
   if defined delay[15] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[15]%,%delay[15]%ms -log="%source_file_name%-eac3tolog-15.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[15]%,%delay[15]%ms %settings% -log="%source_file_name%-eac3tolog-15.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -213,7 +216,7 @@ if defined time[15] (
 if defined time[16] (
   if defined delay[16] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[16]%,%delay[16]%ms -log="%source_file_name%-eac3tolog-16.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[16]%,%delay[16]%ms %settings% -log="%source_file_name%-eac3tolog-16.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -221,7 +224,7 @@ if defined time[16] (
 if defined time[17] (
   if defined delay[17] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[17]%,%delay[17]%ms -log="%source_file_name%-eac3tolog-17.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[17]%,%delay[17]%ms %settings% -log="%source_file_name%-eac3tolog-17.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -229,7 +232,7 @@ if defined time[17] (
 if defined time[18] (
   if defined delay[18] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[18]%,%delay[18]%ms -log="%source_file_name%-eac3tolog-18.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[18]%,%delay[18]%ms %settings% -log="%source_file_name%-eac3tolog-18.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -237,7 +240,7 @@ if defined time[18] (
 if defined time[19] (
   if defined delay[19] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[19]%,%delay[19]%ms -log="%source_file_name%-eac3tolog-19.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[19]%,%delay[19]%ms %settings% -log="%source_file_name%-eac3tolog-19.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
@@ -245,7 +248,7 @@ if defined time[19] (
 if defined time[20] (
   if defined delay[20] (
     ren "%source_file_name%%final_file_suffix%.%file_extension%" "%source_file_name%%final_file_suffix%-temp.%file_extension%"
-    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[20]%,%delay[20]%ms -log="%source_file_name%-eac3tolog-20.txt"
+    "%ea3to_path%" "%source_file_name%%final_file_suffix%-temp.%file_extension%" "%source_file_name%%final_file_suffix%.%file_extension%" -edit=%time[20]%,%delay[20]%ms %settings% -log="%source_file_name%-eac3tolog-20.txt"
     del "%source_file_name%%final_file_suffix%-temp.%file_extension%"
   )
 )
