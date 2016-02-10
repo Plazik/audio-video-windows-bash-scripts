@@ -18,7 +18,7 @@ set "serial_name_eng=Show"
 rem Название сериала на русском
 set "serial_name_rus=Сериал"
 rem Год выхода
-set "year=2015"
+set "year=2016"
 
 rem Название серии без пробелов
 set episode_name_eng_without_spaces=%episode_name_eng: =.%
